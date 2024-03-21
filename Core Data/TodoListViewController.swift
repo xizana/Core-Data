@@ -34,7 +34,10 @@ class TodoListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTappedAdd))
     
         todoListVM.getAllItems {
-            self.todoListView.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.todoListView.tableView.reloadData()
+
+            }
         }
     }
     
@@ -42,7 +45,7 @@ class TodoListViewController: UIViewController {
     
     @objc private func didTappedAdd() {
         let alert =  UIAlertController(title: "New Items", message: "Enter New Item", preferredStyle: .alert)
-        alert.addTextField()
+        alert.addTextField(configurationHandler: nil)
         alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
             guard let field = alert.textFields?.first,
                   let text = field.text, !text.isEmpty else { return }

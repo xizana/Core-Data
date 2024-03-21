@@ -10,7 +10,6 @@ import UIKit
 class TodoListView: UIView {
     
     // MARK: - Properties
-    private var models: [ToDoListItem] = []
     
     private let coreDataLabel: UILabel = {
         let label = UILabel()
@@ -77,11 +76,11 @@ class TodoListView: UIView {
 
 extension TodoListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        models.count
+        ModelsData.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
+        let model = ModelsData.models[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = model.name
         return cell

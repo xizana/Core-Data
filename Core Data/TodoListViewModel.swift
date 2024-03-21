@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class TodoListViewModel: CRUDOperationable {
     // MARK: - Properties
@@ -17,7 +16,8 @@ class TodoListViewModel: CRUDOperationable {
     
     func getAllItems(completion: @escaping () -> Void) {
         do {
-            let items = try context?.fetch(ToDoListItem.fetchRequest())
+            guard let items = try context?.fetch(ToDoListItem.fetchRequest()) else { return }
+            ModelsData.models = items
             completion()
         }
         catch {

@@ -7,67 +7,42 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, CRUDOperationable {
+class TodoListViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let todoListView = TodoListView()
-    private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    private let todoListView: TodoListView
+    private let todoListVM: TodoListViewModel
     
+    init(todoListView: TodoListView = TodoListView(), todoListVM: TodoListViewModel = TodoListViewModel()) {
+        self.todoListView = todoListView
+        self.todoListVM = todoListVM
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view = todoListView
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTappedAdd))
+    
+        todoListVM.getAllItems {
+            self.todoListView.tableView.reloadData()
+        }
     }
     
     // MARK: - Functions
     
-    func getAllItems() {
-        do {
-            let items = try context?.fetch(ToDoListItem.fetchRequest())
-        }
-        catch {
-            print("Can not fetch items")
-        }
-    }
-    
-    func createItem(name: String) {
-        guard let context = context else { return }
-        let newItem = ToDoListItem(context: context)
-        newItem.name = name
-        newItem.createdAt = Date()
+    @objc func didTappedAdd() {
         
-        do {
-           try context.save()
-        }
-        catch {
-            print("Can not create item")
-        }
     }
-    
-    func deleteItem(item: ToDoListItem) {
-        guard let context = context else { return }
-        context.delete(item)
-        
-        do {
-           try context.save()
-        }
-        catch {
-            print("Can not delete item")
-        }
-    }
-    
-    func updateItem(item: ToDoListItem, newName: String) {
-        guard let context = context else { return }
-        context.name = newName
-        do {
-           try context.save()
-        }
-        catch {
-            print("Can not update item")
-        }
-    }
+
     
 }
 

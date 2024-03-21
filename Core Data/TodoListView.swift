@@ -10,6 +10,7 @@ import UIKit
 class TodoListView: UIView {
     
     // MARK: - Properties
+    private var models: [ToDoListItem] = []
     
     private let coreDataLabel: UILabel = {
         let label = UILabel()
@@ -19,7 +20,7 @@ class TodoListView: UIView {
         return label
     }()
     
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -76,12 +77,13 @@ class TodoListView: UIView {
 
 extension TodoListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        7
+        models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = models[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hallo World!"
+        cell.textLabel?.text = model.name
         return cell
     }
     

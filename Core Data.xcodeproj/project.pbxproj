@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A255069D2BAC1F10008B47B8 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255069C2BAC1F10008B47B8 /* TodoListView.swift */; };
+		A255069F2BAC38AE008B47B8 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255069E2BAC38AE008B47B8 /* TodoListViewModel.swift */; };
 		A27589B22BAB0B8100C5EDA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27589B12BAB0B8100C5EDA4 /* AppDelegate.swift */; };
 		A27589B42BAB0B8100C5EDA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27589B32BAB0B8100C5EDA4 /* SceneDelegate.swift */; };
 		A27589B62BAB0B8100C5EDA4 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27589B52BAB0B8100C5EDA4 /* TodoListViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		A255069C2BAC1F10008B47B8 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		A255069E2BAC38AE008B47B8 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		A27589AE2BAB0B8100C5EDA4 /* Core Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27589B12BAB0B8100C5EDA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A27589B32BAB0B8100C5EDA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				A27589C22BAB0B8200C5EDA4 /* Info.plist */,
 				A27589BA2BAB0B8100C5EDA4 /* Core_Data.xcdatamodeld */,
 				A255069C2BAC1F10008B47B8 /* TodoListView.swift */,
+				A255069E2BAC38AE008B47B8 /* TodoListViewModel.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				A27589B62BAB0B8100C5EDA4 /* TodoListViewController.swift in Sources */,
 				A255069D2BAC1F10008B47B8 /* TodoListView.swift in Sources */,
 				A2B6C9AD2BAB66000094FBBB /* Protocols.swift in Sources */,
+				A255069F2BAC38AE008B47B8 /* TodoListViewModel.swift in Sources */,
 				A27589B22BAB0B8100C5EDA4 /* AppDelegate.swift in Sources */,
 				A2B6C9A82BAB64510094FBBB /* ToDoListItem+CoreDataClass.swift in Sources */,
 				A2B6C9A92BAB64510094FBBB /* ToDoListItem+CoreDataProperties.swift in Sources */,

@@ -11,11 +11,13 @@ class TodoListViewController: UIViewController, CRUDOperationable {
     
     // MARK: - Properties
     
-    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    private let todoListView = TodoListView()
+    private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view = todoListView
         view.backgroundColor = .white
     }
     

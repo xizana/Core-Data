@@ -69,19 +69,43 @@
 		A27589B02BAB0B8100C5EDA4 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				A275BC642BAC665700CDABE0 /* Models */,
+				A275BC632BAC662A00CDABE0 /* TodoListModule */,
+				A275BC622BAC65F400CDABE0 /* App */,
 				A2B6C9AB2BAB65E90094FBBB /* Protocols */,
-				A27589B12BAB0B8100C5EDA4 /* AppDelegate.swift */,
-				A27589B32BAB0B8100C5EDA4 /* SceneDelegate.swift */,
-				A27589B52BAB0B8100C5EDA4 /* TodoListViewController.swift */,
 				A27589BD2BAB0B8200C5EDA4 /* Assets.xcassets */,
 				A27589BF2BAB0B8200C5EDA4 /* LaunchScreen.storyboard */,
 				A27589C22BAB0B8200C5EDA4 /* Info.plist */,
 				A27589BA2BAB0B8100C5EDA4 /* Core_Data.xcdatamodeld */,
-				A255069C2BAC1F10008B47B8 /* TodoListView.swift */,
-				A255069E2BAC38AE008B47B8 /* TodoListViewModel.swift */,
-				A275BC602BAC5C3500CDABE0 /* ModelsData.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		A275BC622BAC65F400CDABE0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A27589B32BAB0B8100C5EDA4 /* SceneDelegate.swift */,
+				A27589B12BAB0B8100C5EDA4 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A275BC632BAC662A00CDABE0 /* TodoListModule */ = {
+			isa = PBXGroup;
+			children = (
+				A27589B52BAB0B8100C5EDA4 /* TodoListViewController.swift */,
+				A255069E2BAC38AE008B47B8 /* TodoListViewModel.swift */,
+				A255069C2BAC1F10008B47B8 /* TodoListView.swift */,
+			);
+			path = TodoListModule;
+			sourceTree = "<group>";
+		};
+		A275BC642BAC665700CDABE0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A275BC602BAC5C3500CDABE0 /* ModelsData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A2B6C9AA2BAB64890094FBBB /* ToDoListItem */ = {

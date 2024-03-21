@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Combine
+
 
 class TodoListView: UIView {
     
     // MARK: - Properties
+    
+    @Published var selectedItemIndex: Int?
     
     private let coreDataLabel: UILabel = {
         let label = UILabel()
@@ -86,5 +90,9 @@ extension TodoListView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.selectedItemIndex = indexPath.row
+        
+    }
 }

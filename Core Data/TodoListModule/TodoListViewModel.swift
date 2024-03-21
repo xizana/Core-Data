@@ -41,23 +41,27 @@ class TodoListViewModel: CRUDOperationable {
         }
     }
     
-    func deleteItem(item: ToDoListItem) {
+    func deleteItem(item: ToDoListItem, completion: @escaping () -> Void) {
         guard let context = context else { return }
         context.delete(item)
         
         do {
            try context.save()
+            getAllItems {}
+            completion()
         }
         catch {
             print("Can not delete item")
         }
     }
     
-    func updateItem(item: ToDoListItem, newName: String) {
+    func updateItem(item: ToDoListItem, newName: String, completion: @escaping () -> Void) {
         guard let context = context else { return }
         context.name = newName
         do {
            try context.save()
+            getAllItems {}
+            completion()
         }
         catch {
             print("Can not update item")

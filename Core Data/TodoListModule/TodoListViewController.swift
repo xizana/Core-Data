@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class TodoListViewController: UIViewController {
     
     // MARK: - Properties
+    private var subscriptions = Set<AnyCancellable>()
     
     private let todoListView: TodoListView
     private let todoListVM: TodoListViewModel
@@ -36,9 +38,10 @@ class TodoListViewController: UIViewController {
         todoListVM.getAllItems {
             DispatchQueue.main.async {
                 self.todoListView.tableView.reloadData()
-                
             }
         }
+        
+        sheetActions()
     }
     
     // MARK: - Functions
@@ -58,5 +61,51 @@ class TodoListViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    
+    func sheetActions() {
+        todoListView.$selectedItemIndex
+            .sink { newVal in
+                guard let index = newVal else { return }
+                let item = ModelsData.models[index]
+                let sheet = UIAlertController(title: "Edit", message: nil, preferredStyle: .actionSheet)
+                
+                sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                
+                sheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: {[weak self] _ in
+                    
+                    // TODO: i have to fix this. can not update text
+                    
+                    //                    let alert =  UIAlertController(title: "Edit item", message: "Edit your Item", preferredStyle: .alert)
+                    //                    alert.addTextField(configurationHandler: nil)
+                    //                    alert.textFields?.first?.text = item.name
+                    //                    alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in
+                    //                        guard let field = alert.textFields?.first,
+                    //                              let newName = field.text, !newName.isEmpty else { return }
+                    //                        self?.todoListVM.updateItem(item: item, newName: newName) {
+                    //                            DispatchQueue.main.async {
+                    //                                self?.todoListView.tableView.reloadData()
+                    //                            }
+                    //                        }
+                    //                    }))
+                    //                    self?.present(alert, animated: true)
+                }))
+                
+                
+                sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+                    self?.todoListVM.deleteItem(item: item) {
+                        DispatchQueue.main.async {
+                            self?.todoListView.tableView.reloadData()
+                        }
+                    }
+                }))
+                
+                self.present(sheet, animated: true)
+            }
+            .store(in: &subscriptions)
+        
+        
+        
+    }
 }
 

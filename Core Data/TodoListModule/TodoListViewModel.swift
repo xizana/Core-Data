@@ -25,7 +25,7 @@ class TodoListViewModel: CRUDOperationable {
         }
     }
     
-    func createItem(name: String) {
+    func createItem(name: String, completion: @escaping () -> Void) {
         guard let context = context else { return }
         let newItem = ToDoListItem(context: context)
         newItem.name = name
@@ -33,6 +33,7 @@ class TodoListViewModel: CRUDOperationable {
         
         do {
            try context.save()
+            completion()
             getAllItems {}
         }
         catch {

@@ -9,7 +9,7 @@ import Foundation
 
 protocol CRUDOperationable {
     func getAllItems(completion: @escaping () -> Void)
-    func createItem(name: String)
+    func createItem(name: String, completion: @escaping () -> Void)
     func deleteItem(item: ToDoListItem)
     func updateItem(item: ToDoListItem, newName: String)
 }

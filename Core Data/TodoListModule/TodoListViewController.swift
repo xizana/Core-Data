@@ -25,18 +25,18 @@ class TodoListViewController: UIViewController {
     }
     
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view = todoListView
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTappedAdd))
-    
+        
         todoListVM.getAllItems {
             DispatchQueue.main.async {
                 self.todoListView.tableView.reloadData()
-
+                
             }
         }
     }
@@ -49,7 +49,11 @@ class TodoListViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
             guard let field = alert.textFields?.first,
                   let text = field.text, !text.isEmpty else { return }
-            self?.todoListVM.createItem(name: text)
+            self?.todoListVM.createItem(name: text) {
+                DispatchQueue.main.async {
+                    self?.todoListView.tableView.reloadData()
+                }
+            }
         }))
         present(alert, animated: true)
     }

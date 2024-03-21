@@ -61,7 +61,7 @@ class TodoListView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
-            coreDataLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            coreDataLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             coreDataLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             
             tableView.topAnchor.constraint(equalTo: coreDataLabel.bottomAnchor, constant: 30),

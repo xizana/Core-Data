@@ -30,6 +30,7 @@ class TodoListViewController: UIViewController {
         super.viewDidLoad()
         view = todoListView
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTappedAdd))
     
         todoListVM.getAllItems {
@@ -39,8 +40,15 @@ class TodoListViewController: UIViewController {
     
     // MARK: - Functions
     
-    @objc func didTappedAdd() {
-        
+    @objc private func didTappedAdd() {
+        let alert =  UIAlertController(title: "New Items", message: "Enter New Item", preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first,
+                  let text = field.text, !text.isEmpty else { return }
+            self?.todoListVM.createItem(name: text)
+        }))
+        present(alert, animated: true)
     }
 
     

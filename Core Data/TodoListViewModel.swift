@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewModel: CRUDOperationable {
     // MARK: - Properties
@@ -32,6 +33,7 @@ class TodoListViewModel: CRUDOperationable {
         
         do {
            try context.save()
+            getAllItems {}
         }
         catch {
             print("Can not create item")

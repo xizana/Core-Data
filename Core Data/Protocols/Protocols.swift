@@ -11,5 +11,5 @@ protocol CRUDOperationable {
     func getAllItems()
     func createItem(name: String)
     func deleteItem(item: ToDoListItem)
-    func updateItem(item: ToDoListItem)
+    func updateItem(item: ToDoListItem, newName: String)
 }

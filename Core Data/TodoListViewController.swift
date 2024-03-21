@@ -7,30 +7,30 @@
 
 import UIKit
 
-class ViewController: UIViewController, CRUDOperationable {
+class TodoListViewController: UIViewController, CRUDOperationable {
   
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
 
     // MARK: - Functions
     
     func getAllItems() {
-        <#code#>
+        
     }
     
     func createItem(name: String) {
-        <#code#>
+    
     }
     
     func deleteItem(item: ToDoListItem) {
-        <#code#>
+        
     }
     
     func updateItem(item: ToDoListItem) {
-        <#code#>
+        
     }
 
 }

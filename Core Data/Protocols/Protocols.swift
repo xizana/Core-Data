@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 protocol CRUDOperationable {
     func getAllItems()
     func createItem(name: String)

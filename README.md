@@ -23,6 +23,6 @@ Usage
 
 Add Task: Tap "+" and enter task details.
 Edit Task: Tap to modify.
-Delete Task: Swipe left and tap delete.
+Delete Task: Tap to delete.
 
 P.S Thanks to Core Data and UIKit 🚀

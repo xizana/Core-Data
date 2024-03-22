@@ -57,7 +57,7 @@ class TodoListViewModel: CRUDOperationable {
     
     func updateItem(item: ToDoListItem, newName: String, completion: @escaping () -> Void) {
         guard let context = context else { return }
-        context.name = newName
+        item.name = newName
         do {
            try context.save()
             getAllItems {}

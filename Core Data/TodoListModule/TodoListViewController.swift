@@ -74,21 +74,19 @@ class TodoListViewController: UIViewController {
                 
                 sheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: {[weak self] _ in
                     
-                    // TODO: i have to fix this. can not update text
-                    
-                    //                    let alert =  UIAlertController(title: "Edit item", message: "Edit your Item", preferredStyle: .alert)
-                    //                    alert.addTextField(configurationHandler: nil)
-                    //                    alert.textFields?.first?.text = item.name
-                    //                    alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in
-                    //                        guard let field = alert.textFields?.first,
-                    //                              let newName = field.text, !newName.isEmpty else { return }
-                    //                        self?.todoListVM.updateItem(item: item, newName: newName) {
-                    //                            DispatchQueue.main.async {
-                    //                                self?.todoListView.tableView.reloadData()
-                    //                            }
-                    //                        }
-                    //                    }))
-                    //                    self?.present(alert, animated: true)
+                    let alert =  UIAlertController(title: "Edit item", message: "Edit your Item", preferredStyle: .alert)
+                    alert.addTextField(configurationHandler: nil)
+                    alert.textFields?.first?.text = item.name
+                    alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in
+                        guard let field = alert.textFields?.first,
+                              let newName = field.text, !newName.isEmpty else { return }
+                        self?.todoListVM.updateItem(item: item, newName: newName) {
+                            DispatchQueue.main.async {
+                                self?.todoListView.tableView.reloadData()
+                            }
+                        }
+                    }))
+                    self?.present(alert, animated: true)
                 }))
                 
                 
